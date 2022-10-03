@@ -2,6 +2,7 @@ import React, { useState }  from 'react'
 import './App.scss'
 import RangeSlider from '../RangeSlider/RangeSlider';
 import TotalPrice from '../TotalPrice/TotalPrice';
+import Button from '../Button/Button';
 import { calculateSumOfLeaseAgreement, calculateMonthlyPayment, calculateInitialFee } from '../../utils/utils'
 
 const App = () => {
@@ -35,10 +36,10 @@ const App = () => {
         <TotalPrice title={'Сумма договора лизинга'} price={SumOfLeaseAgreement}/>
         <TotalPrice title={'Ежемесячный платеж от'} price={monthlyPayment}/>
       </div>
-      <button className="button">Оставить заявку</button>
-      <p>{carPrice}</p>
+      <Button title={'Оставить заявку'}/>
+      {/* <p>{carPrice}</p>
       <p>{initialFeeInPercents}</p>
-      <p>{leasingTerm}</p>
+      <p>{leasingTerm}</p> */}
     </main>
   );
 };

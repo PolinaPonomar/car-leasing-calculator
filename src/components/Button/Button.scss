@@ -1,0 +1,13 @@
+@import '../../styles/variables.scss';
+@import '../../styles/mixins.scss';
+
+.button {
+  padding: 18px 0 22px;
+  width: 100%;
+  background-color: #FF9514;
+  border-radius: 40px;
+  font-size: 22px;
+  line-height: 20px;
+  border: none;
+  @include button-text-font;
+}

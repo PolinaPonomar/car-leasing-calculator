@@ -16,7 +16,10 @@
 }
 
 @mixin button-text-font {
-  
+  font-family: 'Nekst';
+  font-style: normal;
+  font-weight: 900;
+  color: #FFFFFF;
 }
 
 @mixin regular-title-font {
