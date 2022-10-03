@@ -1,21 +1,21 @@
+@import '../../styles/variables.scss';
+@import '../../styles/mixins.scss';
+
 .range-slider {
-  margin-bottom: calc(16px + 20px/2); // переменная
+  margin-bottom: calc(16px + $range-slider-thumb-diameter/2); //миксин?
   display: flex;
   flex-direction: column;
 }
 
-.range-slider:last-of-type {
+.range-slider:last-of-type { // миксин?
   margin-bottom: 0;
 }
 
 .range-slider__title {
   margin-bottom: 8px;
-  font-family: 'Gilroy';
-  font-style: normal;
-  font-weight: 400;
   font-size: 14px;
   line-height: 19px;
-  color: #333E48;
+  @include regular-title-font;
 }
 
 .range-slider__body {
@@ -25,76 +25,82 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  background-color: #F3F3F4;
+  background-color: $light-gray-color;
   border-radius: 16px;
+}
+
+.range-slider__body_for-formula {
+  padding: 6px 6px 0 20px;
 }
 
 .range-slider__number-wrapper {
   width: 100%;
   display: flex;
   justify-content: space-between;
+  align-items: center;
+}
+
+.range-slider__number-for-formula {
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  border-radius: 12px;
+  background-color: $medium-gray-color;
 }
 
 .range-slider__number {
   width: 100%;
   background-color: transparent;
   border: none;
-  font-family: 'Nekst';
-  font-style: normal;
-  font-weight: 900;
   font-size: 22px;
   line-height: 20px;
-  color: #333E48;
+  @include input-text-font;
 }
 
 .range-slider__unit {
-  font-family: 'Nekst';
-  font-style: normal;
-  font-weight: 900;
   font-size: 22px;
   line-height: 20px;
-  color: #333E48;
+  @include input-text-font;
 }
 
 // // -webkit- — Safari, Chrome, Opera 15+ и другие браузеры на основе движка WebKit или Blink.
 // // -moz- — Firefox и браузеры на движке Gecko.
-// // -o- — Opera 12 и раньше, на движке Presto. - упускаю короче
 // // -ms- — Internet Explorer и старый Microsoft Edge 12–18.
 
 .range-slider__slider {
   -webkit-appearance: none;
   width: 100%;
   height: 2px;
-  background-color: #E1E1E1;
-  background-image: linear-gradient(#FF9514, #FF9514);
+  background-color: $dark-gray-color;
+  background-image: linear-gradient($accent-color, $accent-color);
   background-repeat: no-repeat;
 }
 
 /* input range thumb */
 .range-slider__slider::-webkit-slider-thumb {
   -webkit-appearance: none;
-  height: 20px; // переменная
-  width: 20px; // переменная
+  height: $range-slider-thumb-diameter;
+  width: $range-slider-thumb-diameter;
   border-radius: 50%;
-  background-color: #FF9514;
+  background-color: $accent-color;
   cursor: pointer;
 }
 
 .range-slider__slider::-moz-range-thumb {
   border: none;
-  height: 20px; // переменная
-  width: 20px; // переменная
+  height: $range-slider-thumb-diameter;
+  width: $range-slider-thumb-diameter;
   border-radius: 50%;
-  background-color: #FF9514;
+  background-color: $accent-color;
   cursor: pointer;
 }
 
 .range-slider__slider::-ms-thumb {
 
-  height: 20px; // переменная
-  width: 20px; // переменная
+  height: $range-slider-thumb-diameter;
+  width: $range-slider-thumb-diameter;
   border-radius: 50%;
-  background-color: #FF9514;
+  background-color: $accent-color;
   cursor: pointer;
 }
 

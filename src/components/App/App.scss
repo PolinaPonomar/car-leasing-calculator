@@ -1,3 +1,6 @@
+@import '../../styles/variables.scss';
+@import '../../styles/mixins.scss';
+
 .page {
   padding: 44px 20px 64px;
   display: flex;
@@ -6,12 +9,9 @@
 
 .title {
   margin-bottom: 32px; // миксин
-  font-family: 'Nekst';
-  font-style: normal;
-  font-weight: 900;
   font-size: 34px;
   line-height: 31px;
-  color: #111111;
+  @include accent-text-font;
 }
 
 .range-sliders {

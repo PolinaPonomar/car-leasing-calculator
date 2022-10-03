@@ -1,0 +1,27 @@
+@import './variables.scss';
+
+// общие стили шрифтов 
+@mixin accent-text-font {
+  font-family: 'Nekst';
+  font-style: normal;
+  font-weight: 900;
+  color: $accent-font-color;
+}
+
+@mixin input-text-font {
+  font-family: 'Nekst';
+  font-style: normal;
+  font-weight: 900;
+  color: $main-font-color;
+}
+
+@mixin button-text-font {
+  
+}
+
+@mixin regular-title-font {
+  font-family: 'Gilroy';
+  font-style: normal;
+  font-weight: 400;
+  color: $main-font-color;
+}

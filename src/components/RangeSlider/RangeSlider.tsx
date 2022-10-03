@@ -1,6 +1,6 @@
 import React, { useState }  from 'react'
 import './RangeSlider.scss'
-import { calculateColorTrackOfRangeInput } from '../../utils/utils'
+import { calculateColorTrackOfRangeInput, calculateInitialFee } from '../../utils/utils'
 
 type RangeSliderProps = {
   title: string
@@ -8,6 +8,9 @@ type RangeSliderProps = {
   maxNumber: number
   defaultNumber: number
   unit: string
+  hasFormula?: boolean
+  updateData: Function
+  carPrice?: number
 }; 
 
 const RangeSlider = (props: RangeSliderProps) => {
@@ -16,13 +19,16 @@ const RangeSlider = (props: RangeSliderProps) => {
   
   const handleNumberChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setNumber(Number(event.target.value))
+    props.updateData(Number(event.target.value))
   }
 
   const checkNumber = () => {
     if(number < props.minNumber) {
       setNumber(props.minNumber)
+      props.updateData(props.minNumber)
     } else if (number > props.maxNumber) {
       setNumber(props.maxNumber)
+      props.updateData(props.maxNumber)
     }
   }
 
@@ -31,24 +37,55 @@ const RangeSlider = (props: RangeSliderProps) => {
       checkNumber()
     } 
   }
-  
+  // редач css - 1час DONE
+  // штука с кусочком + формула - 2 часа DONE
+
+  // формулы
+  // отображение чисел с разбивкой - 1час
+  // состояния - 2 часа
+  // две итогн суммы + кнопка -2 часа
+  // отправка на бэк - 2 часа
+  // рефакторинг - 1 час
+  // на гитхаб пейджес -1 час
+  // добавиь миксины? range-slider__body_for-formula
   return (
     <div className="range-slider">
       <p className="range-slider__title">{props.title}</p>
-      <div className="range-slider__body">
+      <div className={props.hasFormula ? "range-slider__body range-slider__body_for-formula" : "range-slider__body"}>
         <div className="range-slider__number-wrapper">
-          <input 
-            className="range-slider__number"
-            type="number"
-            min={props.minNumber}
-            max={props.maxNumber}
-            value={String(number)}
-            onChange={handleNumberChange}
-            onMouseLeave={checkNumber}
-            onKeyDown={handleEnterDown}
-          >
-          </input>
-          <p className="range-slider__unit">{props.unit}</p>
+        {props.hasFormula ?
+          (<>
+            <p className="range-slider__number">{calculateInitialFee(props.carPrice, number)}</p>
+            <div className="range-slider__number-for-formula">
+            <input
+                className="range-slider__number"
+                type="number"
+                min={props.minNumber}
+                max={props.maxNumber}
+                value={String(number)}
+                onChange={handleNumberChange}
+                onMouseLeave={checkNumber}
+                onKeyDown={handleEnterDown}
+              >
+              </input>
+              <p className="range-slider__unit">{props.unit}</p>
+            </div>
+          </>) :
+          (<>
+            <input 
+              className="range-slider__number"
+              type="number"
+              min={props.minNumber}
+              max={props.maxNumber}
+              value={String(number)}
+              onChange={handleNumberChange}
+              onMouseLeave={checkNumber}
+              onKeyDown={handleEnterDown}
+            >
+            </input>
+            <p className="range-slider__unit">{props.unit}</p>
+          </>)
+        }
         </div>
         <input
           className="range-slider__slider"
