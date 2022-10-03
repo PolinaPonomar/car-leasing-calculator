@@ -1,0 +1,26 @@
+@import '../../styles/variables.scss';
+@import '../../styles/mixins.scss';
+
+.total-price {
+  margin-bottom: 29px;
+  display: flex;
+  flex-direction: column;
+}
+
+.total-price:last-of-type{
+  margin-bottom: 0;
+}
+
+.total-price__title {
+  margin-bottom: 2px;
+  font-size: 14px;
+  line-height: 19px;
+  @include regular-title-font
+}
+
+.total-price__number {
+  font-size: 22px;
+  line-height: 20px;
+  @include accent-text-font;
+  color: #333333;
+}

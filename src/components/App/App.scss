@@ -15,7 +15,13 @@
 }
 
 .range-sliders {
-  margin-bottom: 16px; // миксин
+  margin-bottom: 23px; // миксин
+  display: flex;
+  flex-direction: column;
+}
+
+.total-prices {
+  margin-bottom: 32px; // миксин
   display: flex;
   flex-direction: column;
 }

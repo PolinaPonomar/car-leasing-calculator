@@ -9,8 +9,8 @@ type RangeSliderProps = {
   defaultNumber: number
   unit: string
   hasFormula?: boolean
+  initialFee?: number
   updateData: Function
-  carPrice?: number
 }; 
 
 const RangeSlider = (props: RangeSliderProps) => {
@@ -40,10 +40,9 @@ const RangeSlider = (props: RangeSliderProps) => {
   // редач css - 1час DONE
   // штука с кусочком + формула - 2 часа DONE
 
-  // формулы
+  // две итогн суммы + кнопка -2 часа
   // отображение чисел с разбивкой - 1час
   // состояния - 2 часа
-  // две итогн суммы + кнопка -2 часа
   // отправка на бэк - 2 часа
   // рефакторинг - 1 час
   // на гитхаб пейджес -1 час
@@ -55,7 +54,8 @@ const RangeSlider = (props: RangeSliderProps) => {
         <div className="range-slider__number-wrapper">
         {props.hasFormula ?
           (<>
-            <p className="range-slider__number">{calculateInitialFee(props.carPrice, number)}</p>
+            {/* <p className="range-slider__number">{calculateInitialFee(props.carPrice, number)} &#8381;</p> */}
+            <p className="range-slider__number">{props.initialFee} &#8381;</p>
             <div className="range-slider__number-for-formula">
             <input
                 className="range-slider__number"
