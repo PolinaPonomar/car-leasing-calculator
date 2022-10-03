@@ -1,19 +1,21 @@
 import React, { useState }  from 'react'
 import './RangeSlider.scss'
+import { calculateColorTrackOfRangeInput } from '../../utils/utils'
 
 type RangeSliderProps = {
   title: string
-  minNumber: number 
+  minNumber: number
   maxNumber: number
   defaultNumber: number
+  unit: string
 }; 
 
 const RangeSlider = (props: RangeSliderProps) => {
   const [number, setNumber] = useState(props.defaultNumber);
+  const rangeInputCssRules = {backgroundSize: calculateColorTrackOfRangeInput(number, props.minNumber, props.maxNumber)}
   
   const handleNumberChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const number = Number(event.target.value);
-      setNumber(number)
+    setNumber(Number(event.target.value))
   }
 
   const checkNumber = () => {
@@ -34,8 +36,30 @@ const RangeSlider = (props: RangeSliderProps) => {
     <div className="range-slider">
       <p className="range-slider__title">{props.title}</p>
       <div className="range-slider__body">
-        <input className="range-slider__number" type="number" value={number} onChange={handleNumberChange} onMouseLeave={checkNumber} onKeyDown={handleEnterDown}></input>
-        <input className="range-slider__slider" type="range" min={props.minNumber} max={props.maxNumber} defaultValue={number} value={number} onChange={handleNumberChange}></input>
+        <div className="range-slider__number-wrapper">
+          <input 
+            className="range-slider__number"
+            type="number"
+            min={props.minNumber}
+            max={props.maxNumber}
+            value={String(number)}
+            onChange={handleNumberChange}
+            onMouseLeave={checkNumber}
+            onKeyDown={handleEnterDown}
+          >
+          </input>
+          <p className="range-slider__unit">{props.unit}</p>
+        </div>
+        <input
+          className="range-slider__slider"
+          type="range"
+          style={rangeInputCssRules}
+          min={props.minNumber}
+          max={props.maxNumber}
+          value={number}
+          onChange={handleNumberChange}
+        >
+        </input>
         {/* <p>{number}</p> */}
       </div>
     </div>

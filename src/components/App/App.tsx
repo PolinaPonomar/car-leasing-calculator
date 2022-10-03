@@ -8,9 +8,9 @@ const App = () => {
     <main className="page">
       <h1 className="title">Рассчитайте стоимость автомобиля в лизинг</h1>
       <div className="range-sliders">
-        <RangeSlider title={'Стоимость автомобиля'} minNumber={1000000} maxNumber={6000000} defaultNumber={3300000}/>
-        <RangeSlider title={'Первоначальный взнос'} minNumber={10} maxNumber={60} defaultNumber={13}/>
-        <RangeSlider title={'Срок лизинга'} minNumber={1} maxNumber={60} defaultNumber={60}/>
+        <RangeSlider title={'Стоимость автомобиля'} minNumber={1000000} maxNumber={6000000} defaultNumber={3300000} unit={'₽'}/>
+        <RangeSlider title={'Первоначальный взнос'} minNumber={10} maxNumber={60} defaultNumber={13} unit={'%'}/>
+        <RangeSlider title={'Срок лизинга'} minNumber={1} maxNumber={60} defaultNumber={60} unit={'мес.'}/>
       </div>
       <div className="total-prices">
         <div className="total-price">
