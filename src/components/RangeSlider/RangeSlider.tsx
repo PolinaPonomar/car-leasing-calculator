@@ -16,24 +16,34 @@ type RangeSliderProps = {
 
 const RangeSlider = (props: RangeSliderProps) => {
   const [isNumberChangingByTextInput, setIsNumberChangingByTextInput] = useState(false);
-  const [number, setNumber] = useState(props.defaultNumber);
-  const rangeInputCssRules = { backgroundSize: calculateColorTrackOfRangeInput(number, props.minNumber, props.maxNumber) }
+  const [number, setNumber] = useState(makeNumberWithSpaces(props.defaultNumber));
+  const rangeInputCssRules = { backgroundSize: calculateColorTrackOfRangeInput(makeNumberfromString(number), props.minNumber, props.maxNumber) }
 
   const handleTextInputClick = () => {
     setIsNumberChangingByTextInput(true)
   }
 
-  const handleNumberChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setNumber(Number(event.target.value))
-    props.updateData(Number(event.target.value))
+  const handleNumberChangeByTextInput = (event: React.ChangeEvent<HTMLInputElement>) => {
+    if (!isNaN(makeNumberfromString(event.target.value))) {
+      setNumber(makeNumberWithSpaces(makeNumberfromString(event.target.value)))
+      if(makeNumberfromString(event.target.value) >= props.minNumber && makeNumberfromString(event.target.value) <=  props.maxNumber) {
+        props.updateData(makeNumberfromString(event.target.value))
+      } 
+    }
+  }
+
+  const handleNumberChangeByRangeInput = (event: React.ChangeEvent<HTMLInputElement>) => {
+    console.log(typeof event.target.value);
+    setNumber(makeNumberWithSpaces(makeNumberfromString(event.target.value)))
+    props.updateData(makeNumberfromString(event.target.value))
   }
 
   const checkNumber = () => {
-    if (number < props.minNumber) {
-      setNumber(props.minNumber)
+    if (makeNumberfromString(number) < props.minNumber) {
+      setNumber(makeNumberWithSpaces(props.minNumber))
       props.updateData(props.minNumber)
-    } else if (number > props.maxNumber) {
-      setNumber(props.maxNumber)
+    } else if (makeNumberfromString(number) > props.maxNumber) {
+      setNumber(makeNumberWithSpaces(props.maxNumber))
       props.updateData(props.maxNumber)
     }
   }
@@ -65,14 +75,10 @@ const RangeSlider = (props: RangeSliderProps) => {
               <div className="range-slider__accent">
                 <input
                   className="range-slider__number-in-accent"
-                  // type="text"
-                  // value={makeNumberWithSpaces(number)}
-                  type="number"
-                  min={props.minNumber}
-                  max={props.maxNumber}
-                  value={String(number)}
+                  type="text"
+                  value={number}
                   onClick={handleTextInputClick}
-                  onChange={handleNumberChange}
+                  onChange={handleNumberChangeByTextInput}
                   onMouseLeave={handleMouseLeave}
                   onKeyDown={handleEnterDown}
                   disabled={props.isDisabled}
@@ -84,14 +90,10 @@ const RangeSlider = (props: RangeSliderProps) => {
             (<>
               <input
                 className="range-slider__number"
-                // type="text"
-                // value={makeNumberWithSpaces(number)}
-                type="number"
-                min={props.minNumber}
-                max={props.maxNumber}
-                value={String(number)}
+                type="text"
+                value={number}
                 onClick={handleTextInputClick}
-                onChange={handleNumberChange}
+                onChange={handleNumberChangeByTextInput}
                 onMouseLeave={handleMouseLeave}
                 onKeyDown={handleEnterDown}
                 disabled={props.isDisabled}
@@ -107,8 +109,8 @@ const RangeSlider = (props: RangeSliderProps) => {
           style={rangeInputCssRules}
           min={props.minNumber}
           max={props.maxNumber}
-          value={number}
-          onChange={handleNumberChange}
+          value={makeNumberfromString(number)}
+          onChange={handleNumberChangeByRangeInput}
           disabled={props.isDisabled}
         >
         </input>

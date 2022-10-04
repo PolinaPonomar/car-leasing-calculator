@@ -35,20 +35,36 @@
   text-rendering: optimizeLegibility;
 }
 
-// у всех численных полей ввода убрать стандартные стили
-input[type="number"]::-webkit-outer-spin-button,
-input[type="number"]::-webkit-inner-spin-button {
-  -webkit-appearance: none;
-}
-input[type="number"],
-input[type="number"]:hover,
-input[type="number"]:focus {
-  appearance: none;
-  -moz-appearance: textfield;
+// убрать стандартные стили у полей ввода
+// input[type="number"]::-webkit-outer-spin-button,
+// input[type="number"]::-webkit-inner-spin-button {
+//   -webkit-appearance: none;
+// }
+// input[type="number"],
+// input[type="number"]:hover,
+// input[type="number"]:focus {
+//   appearance: none;
+//   -moz-appearance: textfield;
+//   outline: none;
+// }
+
+// input[type="number"]:hover {
+//   cursor: pointer;
+// }
+
+// input[type="text"],
+// input[type="text"]:hover,
+// input[type="text"]:focus {
+//   appearance: none;
+//   -moz-appearance: textfield;
+//   outline: none;
+// }
+
+input[type="text"]:focus {
   outline: none;
 }
 
-input[type="number"]:hover {
+input[type="text"]:hover {
   cursor: pointer;
 }
 
