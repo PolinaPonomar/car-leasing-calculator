@@ -5,13 +5,6 @@ import TotalPrice from '../TotalPrice/TotalPrice';
 import Button from '../Button/Button';
 import { calculateSumOfLeaseAgreement, calculateMonthlyPayment, calculateInitialFee, makeNumberWithSpaces } from '../../utils/utils'
 
-// отображение чисел с разбивкой - 1час ТУТ краевые проблемы, вернись к ним позже (чтобы тут не было Nan если чел пытается ввести текст и т.д.)
-
-// 13 проц, знак рубля, оранж полоска при вводе цифры
-// добавиь миксины?
-// рефакторинг - 1 час + редми - как люди перестают вводить цифры
-// на гитхаб пейджес -1 час
-
 const App = () => {
   const [isLoading, setLoading] = useState(false);
   const [carPrice, setCarPrice] = useState(3300000);

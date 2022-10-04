@@ -52,7 +52,7 @@
   width: 27px;
   height: 27px;
   border-radius: 50%;
-  border: 2px solid #FFFFFF;
+  border: 2px solid $button-font-color;
   border-top-color: transparent;
   animation: loading 1s linear infinite;
 }
