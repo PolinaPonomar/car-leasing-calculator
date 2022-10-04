@@ -14,14 +14,14 @@
 }
 
 .title {
-  margin-bottom: 32px; // миксин
+  margin-bottom: 32px;
   font-size: 34px;
   line-height: 31px;
   @include accent-text-font;
 }
 
 .range-sliders {
-  margin-bottom: 23px; // миксин
+  margin-bottom: 23px;
   display: flex;
   flex-direction: column;
 }
@@ -32,7 +32,7 @@
 }
 
 .total-prices {
-  margin-bottom: 32px; // миксин
+  margin-bottom: 32px;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(167px,1fr));
   column-gap: 20px;
@@ -45,17 +45,17 @@
   }
 
   .title {
-    margin-bottom: 44px; // миксин
+    margin-bottom: 44px;
     font-size: 54px;
     line-height: 49px;
   }
 
   .range-sliders {
-    margin-bottom: 48px; // миксин
+    margin-bottom: 48px;
   }
 
   .total-prices {
-    margin-bottom: 42px; // миксин
+    margin-bottom: 42px;
     display: flex;
     width: 84%;
     justify-content: space-between;
@@ -91,7 +91,7 @@
   }
 
   .range-sliders {
-    margin-bottom: 50px; // миксин
+    margin-bottom: 50px;
     flex-direction: row;
   }
 

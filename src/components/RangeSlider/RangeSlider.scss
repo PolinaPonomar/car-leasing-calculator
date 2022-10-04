@@ -2,7 +2,7 @@
 @import '../../styles/mixins.scss';
 
 .range-slider {
-  margin-bottom: calc(16px + $range-slider-thumb-diameter/2); //миксин?
+  margin-bottom: calc(16px + $range-slider-thumb-diameter/2);
   display: flex;
   flex-direction: column;
 }
@@ -11,7 +11,7 @@
   opacity: 0.4;
 }
 
-.range-slider:last-of-type { // миксин?
+.range-slider:last-of-type {
   margin-bottom: 0;
 }
 
@@ -150,7 +150,7 @@
 
 @media screen and (min-width: 768px) {
   .range-slider {
-    margin-bottom: calc(28px + $range-slider-thumb-diameter/2); //миксин?
+    margin-bottom: calc(28px + $range-slider-thumb-diameter/2);
   }
 
   .range-slider__title {
