@@ -47,3 +47,16 @@ input[type="number"]:focus {
   -moz-appearance: textfield;
   outline: none;
 }
+
+
+// input[type="text"]::-webkit-outer-spin-button,
+// input[type="text"]::-webkit-inner-spin-button { - разберись с этим
+//   -webkit-appearance: none;
+// }
+// input[type="text"],
+// input[type="text"]:hover,
+// input[type="text"]:focus {
+//   appearance: none;
+//   -moz-appearance: textfield;
+//   outline: none;
+// }

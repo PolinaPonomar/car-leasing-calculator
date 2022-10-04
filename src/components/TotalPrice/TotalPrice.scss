@@ -2,13 +2,8 @@
 @import '../../styles/mixins.scss';
 
 .total-price {
-  margin-bottom: 29px;
   display: flex;
   flex-direction: column;
-}
-
-.total-price:last-of-type{
-  margin-bottom: 0;
 }
 
 .total-price__title {
@@ -21,6 +16,29 @@
 .total-price__number {
   font-size: 22px;
   line-height: 20px;
-  @include accent-text-font;
-  color: #333333;
+  @include second-accent-text-font;
+}
+
+@media screen and (min-width: 768px) {
+  .total-price__title {
+    margin-bottom: 8px;
+    font-size: 16px;
+    line-height: 24px;
+  }
+  
+  .total-price__number {
+    font-size: 54px;
+    line-height: 49px;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .total-price {
+    margin-right: 32px;
+    width: 427px;
+  }
+
+  .total-price:last-of-type {
+    margin-right: 0;
+  }
 }

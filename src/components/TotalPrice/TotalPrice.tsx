@@ -3,7 +3,7 @@ import './TotalPrice.scss'
 
 type TotalPriceProps = {
   title: string
-  price: number
+  price: string
 }; 
 
 const TotalPrice = (props: TotalPriceProps) => {

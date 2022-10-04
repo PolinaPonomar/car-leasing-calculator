@@ -20,3 +20,11 @@ export function calculateSumOfLeaseAgreement (initialFee: number, leasingTerm: n
 export function calculateMonthlyPayment (carPrice: number, initialFee: number, leasingTerm: number) : number {
   return Math.ceil((carPrice - initialFee) * ((interestRate * Math.pow((1 + interestRate),  leasingTerm)) / (Math.pow((1 + interestRate), leasingTerm) - 1)));  // округляю до целого в большую сторону, чтобы люди не вносили копейки
 }
+
+export function makeNumberWithSpaces(num: number) {
+  return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ");
+}
+
+export function makeNumberfromString(num: string) {
+  return Number(num.split(' ').join(''));
+}

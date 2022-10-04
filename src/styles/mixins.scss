@@ -1,25 +1,29 @@
 @import './variables.scss';
 
-// общие стили шрифтов 
-@mixin accent-text-font {
+// шрифты 
+@mixin bold-font {
   font-family: 'Nekst';
   font-style: normal;
   font-weight: 900;
+}
+@mixin accent-text-font {
+  @include bold-font;
   color: $accent-font-color;
 }
 
+@mixin second-accent-text-font {
+  @include bold-font;
+  color: $second-accent-font-color;
+}
+
 @mixin input-text-font {
-  font-family: 'Nekst';
-  font-style: normal;
-  font-weight: 900;
+  @include bold-font;
   color: $main-font-color;
 }
 
 @mixin button-text-font {
-  font-family: 'Nekst';
-  font-style: normal;
-  font-weight: 900;
-  color: #FFFFFF;
+  @include bold-font;
+  color: $button-font-color;
 }
 
 @mixin regular-title-font {

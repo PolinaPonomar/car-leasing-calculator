@@ -1,6 +1,6 @@
 import React, { useState }  from 'react'
 import './RangeSlider.scss'
-import { calculateColorTrackOfRangeInput, calculateInitialFee } from '../../utils/utils'
+import { calculateColorTrackOfRangeInput, makeNumberWithSpaces, makeNumberfromString } from '../../utils/utils'
 
 type RangeSliderProps = {
   title: string
@@ -18,6 +18,8 @@ const RangeSlider = (props: RangeSliderProps) => {
   const rangeInputCssRules = {backgroundSize: calculateColorTrackOfRangeInput(number, props.minNumber, props.maxNumber)}
   
   const handleNumberChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    // setNumber(makeNumberfromString(event.target.value))
+    // props.updateData(makeNumberfromString(event.target.value))
     setNumber(Number(event.target.value))
     props.updateData(Number(event.target.value))
   }
@@ -39,47 +41,53 @@ const RangeSlider = (props: RangeSliderProps) => {
   }
   // редач css - 1час DONE
   // штука с кусочком + формула - 2 часа DONE
-  // две итогн суммы + кнопка -2 часа
+  // две итогн суммы + кнопка -2 часа DONE
 
-  // состояния - 2 часа
+  // отображение чисел с разбивкой - 1час ТУТ краевые проблемы, вернись к ним позже (чтобы тут не было Nan если чел пытается ввести текст и т.д.)
+  // состояния - 2 часа - сделала только кнопку
 
-  // отображение чисел с разбивкой - 1час
-  // отправка на бэк - 2 часа
-  // рефакторинг - 1 час
   // медиа запросы - 2 часа
+  // рефакторинг - 1 час
+  // отправка на бэк - 2 часа
+
   // на гитхаб пейджес -1 час
   // добавиь миксины? range-slider__body_for-formula
   return (
     <div className="range-slider">
       <p className="range-slider__title">{props.title}</p>
-      <div className={props.hasFormula ? "range-slider__body range-slider__body_for-formula" : "range-slider__body"}>
+      <div className={props.hasFormula ? "range-slider__body range-slider__body_with-accent" : "range-slider__body"}>
         <div className="range-slider__number-wrapper">
         {props.hasFormula ?
           (<>
-            {/* <p className="range-slider__number">{calculateInitialFee(props.carPrice, number)} &#8381;</p> */}
-            <p className="range-slider__number">{props.initialFee} &#8381;</p>
-            <div className="range-slider__number-for-formula">
+            <p className="range-slider__number">{makeNumberWithSpaces(props.initialFee)} &#8381;</p>
+            <div className="range-slider__accent">
             <input
-                className="range-slider__number"
+                className="range-slider__number-in-accent"
+                // type="text"
+                // value={makeNumberWithSpaces(number)}
                 type="number"
                 min={props.minNumber}
                 max={props.maxNumber}
                 value={String(number)}
+
                 onChange={handleNumberChange}
                 onMouseLeave={checkNumber}
                 onKeyDown={handleEnterDown}
               >
               </input>
-              <p className="range-slider__unit">{props.unit}</p>
+              <p className="range-slider__unit-in-accent">{props.unit}</p>
             </div>
           </>) :
           (<>
             <input 
               className="range-slider__number"
+              // type="text"
+              // value={makeNumberWithSpaces(number)}
               type="number"
               min={props.minNumber}
               max={props.maxNumber}
               value={String(number)}
+              
               onChange={handleNumberChange}
               onMouseLeave={checkNumber}
               onKeyDown={handleEnterDown}
@@ -99,7 +107,6 @@ const RangeSlider = (props: RangeSliderProps) => {
           onChange={handleNumberChange}
         >
         </input>
-        {/* <p>{number}</p> */}
       </div>
     </div>
   );

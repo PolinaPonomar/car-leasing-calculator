@@ -29,7 +29,7 @@
   border-radius: 16px;
 }
 
-.range-slider__body_for-formula {
+.range-slider__body_with-accent {
   padding: 6px 6px 0 20px;
 }
 
@@ -40,11 +40,11 @@
   align-items: center;
 }
 
-.range-slider__number-for-formula {
+.range-slider__accent {
   padding: 10px;
   display: flex;
   align-items: center;
-  border-radius: 12px;
+  border-radius: 16px;
   background-color: $medium-gray-color;
 }
 
@@ -58,6 +58,20 @@
 }
 
 .range-slider__unit {
+  font-size: 22px;
+  line-height: 20px;
+  @include input-text-font;
+}
+
+.range-slider__number-in-accent {
+  background-color: transparent;
+  border: none;
+  font-size: 22px;
+  line-height: 20px;
+  @include input-text-font;
+}
+
+.range-slider__unit-in-accent {
   font-size: 22px;
   line-height: 20px;
   @include input-text-font;
@@ -121,4 +135,61 @@
   box-shadow: none;
   border: none;
   background: transparent;
+}
+
+@media screen and (min-width: 768px) {
+  .range-slider {
+    margin-bottom: calc(28px + $range-slider-thumb-diameter/2); //миксин?
+  }
+
+  .range-slider__title {
+    margin-bottom: 24px;
+    font-size: 16px;
+    line-height: 20px;
+  }
+
+  .range-slider__body {
+    height: 68px; 
+    padding: 16px 24px 0;
+  }
+
+  .range-slider__body_with-accent {
+    padding: 7px 7px 0 24px;
+  }
+
+  .range-slider__accent {
+    padding: 14px 6px;
+  }
+
+  .range-slider__number {
+    font-size: 30px;
+    line-height: 36px;
+  }
+
+  .range-slider__unit {
+    font-size: 30px;
+    line-height: 36px;
+  }
+  
+  .range-slider__number-in-accent {
+    font-size: 20px;
+    line-height: 24px;
+  }
+  
+  .range-slider__unit-in-accent {
+    font-size: 20px;
+    line-height: 24px;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .range-slider {
+    margin-bottom: 0;
+    margin-right: 32px;
+    width: 100%;
+  }
+
+  .range-slider:last-of-type {
+    margin-right: 0;
+  }
 }
