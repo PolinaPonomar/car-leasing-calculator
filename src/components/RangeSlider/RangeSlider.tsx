@@ -55,6 +55,7 @@ const RangeSlider = (props: RangeSliderProps) => {
 
   const handleEnterDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
     if (event.key == 'Enter') {
+      event.preventDefault();
       checkNumber()
       setIsNumberChangingByTextInput(false)
     }
