@@ -22,7 +22,8 @@ const Button = (props: ButtonProps) => {
   const [isLoading, setIsLoading] = useState(false);
   const postInfo = async (data: dataTypes) => await fetchInfo(data);
 
-  const handleClick = () => {
+  const handleClick = (event : React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+    event.preventDefault();
     setIsLoading(true);
     props.updateLoadingStatus(true);
     postInfo(props.formData)
