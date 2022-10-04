@@ -1,4 +1,4 @@
-import React, { useState }  from 'react'
+import React, { useState } from 'react'
 import './Button.scss'
 import { fetchInfo } from '../../services/api';
 
@@ -9,7 +9,7 @@ type dataTypes = {
   initialFee: number
   monthlyPayment: number
   sumOfLeaseAgreement: number
-}; 
+};
 
 type ButtonProps = {
   title: string
@@ -40,12 +40,19 @@ const Button = (props: ButtonProps) => {
 
   return (
     <>
-    {isLoading ?
-      (<button className="button button_loading" type="submit" disabled>
-        <div className="button__preloader"></div>
-      </button>) :
-      (<button className={props.isDisabled ? "button button_disabled" : "button"} type="submit" onClick={handleClick} disabled={props.isDisabled}>{props.title}</button>)
-    }
+      {isLoading ?
+        (<button className="button button_loading" type="submit" disabled>
+          <div className="button__preloader"></div>
+        </button>) :
+        (<button
+          className={props.isDisabled ? "button button_disabled" : "button"}
+          type="submit"
+          onClick={handleClick}
+          disabled={props.isDisabled}
+        >
+          {props.title}
+        </button>)
+      }
     </>
   );
 };

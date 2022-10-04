@@ -1,4 +1,4 @@
-const interestRate = 0.035;
+import {interestRate} from './constants'
 
 export function calculateColorTrackOfRangeInput (num: number, min: number, max: number): string {
   if (num < min) {

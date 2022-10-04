@@ -86,10 +86,6 @@
   @include input-text-font;
 }
 
-// // -webkit- — Safari, Chrome, Opera 15+ и другие браузеры на основе движка WebKit или Blink.
-// // -moz- — Firefox и браузеры на движке Gecko.
-// // -ms- — Internet Explorer и старый Microsoft Edge 12–18.
-
 .range-slider__slider {
   -webkit-appearance: none;
   width: 100%;
@@ -110,7 +106,6 @@
   width: $range-slider-thumb-diameter;
   border-radius: 50%;
   background-color: $accent-color;
-  //cursor: pointer;
 }
 
 .range-slider__slider::-moz-range-thumb {
@@ -119,7 +114,6 @@
   width: $range-slider-thumb-diameter;
   border-radius: 50%;
   background-color: $accent-color;
-  //cursor: pointer;
 }
 
 .range-slider__slider::-ms-thumb {
@@ -128,7 +122,6 @@
   width: $range-slider-thumb-diameter;
   border-radius: 50%;
   background-color: $accent-color;
-  //cursor: pointer;
 }
 
 /* input range track */
