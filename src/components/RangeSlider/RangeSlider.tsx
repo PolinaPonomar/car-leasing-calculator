@@ -11,18 +11,36 @@ type RangeSliderProps = {
   hasFormula?: boolean
   initialFee?: number
   updateData: Function
+  isDisabled: boolean
 }; 
 
 const RangeSlider = (props: RangeSliderProps) => {
+  const [isNumberChangingByTextInput, setIsNumberChangingByTextInput] = useState(false);
   const [number, setNumber] = useState(props.defaultNumber);
   const rangeInputCssRules = {backgroundSize: calculateColorTrackOfRangeInput(number, props.minNumber, props.maxNumber)}
+
+  const handleTextInputClick = () => {
+    setIsNumberChangingByTextInput(true)
+  }
   
   const handleNumberChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     // setNumber(makeNumberfromString(event.target.value))
     // props.updateData(makeNumberfromString(event.target.value))
+    //setIsNumberChangingByTextInput(true)
     setNumber(Number(event.target.value))
     props.updateData(Number(event.target.value))
   }
+  
+  // const handleNumberChangeByTextInput = (event: React.ChangeEvent<HTMLInputElement>) => {
+  //   //setIsNumberChangingByTextInput(true)
+  //   setNumber(Number(event.target.value))
+  //   props.updateData(Number(event.target.value))
+  // }
+
+  // const handleNumberChangeByRangeInput = (event: React.ChangeEvent<HTMLInputElement>) => {
+  //   setNumber(Number(event.target.value))
+  //   props.updateData(Number(event.target.value))
+  // }
 
   const checkNumber = () => {
     if(number < props.minNumber) {
@@ -34,9 +52,15 @@ const RangeSlider = (props: RangeSliderProps) => {
     }
   }
 
+  const handleMouseLeave = () => {
+    checkNumber()
+    setIsNumberChangingByTextInput(false)
+  }
+
   const handleEnterDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
     if(event.key == 'Enter' ) {
       checkNumber()
+      setIsNumberChangingByTextInput(false)
     } 
   }
   // редач css - 1час DONE
@@ -44,11 +68,10 @@ const RangeSlider = (props: RangeSliderProps) => {
   // две итогн суммы + кнопка -2 часа DONE
   // медиа запросы - 2 часа DONE
   // отправка на бэк - 2 часа - DONE
-
-   // состояния - 2 часа - сделала только кнопку  и то не без дезайблед
+  // состояния - 2 часа - сделала только кнопку  и то не без дезайблед - DONE
 
   // отображение чисел с разбивкой - 1час ТУТ краевые проблемы, вернись к ним позже (чтобы тут не было Nan если чел пытается ввести текст и т.д.)
-  // 13 проц и знак рубля
+  // 13 проц, знак рубля, оранж полоска при вводе цифры
 
   // добавиь миксины?
 
@@ -57,9 +80,13 @@ const RangeSlider = (props: RangeSliderProps) => {
   // на гитхаб пейджес -1 час
   
   return (
-    <div className="range-slider">
+    <div className={props.isDisabled ? "range-slider range-slider_disabled" : "range-slider"}>
       <p className="range-slider__title">{props.title}</p>
-      <div className={props.hasFormula ? "range-slider__body range-slider__body_with-accent" : "range-slider__body"}>
+      <div className={
+        (props.hasFormula &&isNumberChangingByTextInput) ? "range-slider__body range-slider__body_with-accent range-slider__body_active" :
+        props.hasFormula ? "range-slider__body range-slider__body_with-accent" :
+        isNumberChangingByTextInput ? "range-slider__body range-slider__body_active" : "range-slider__body"
+      }>
         <div className="range-slider__number-wrapper">
         {props.hasFormula ?
           (<>
@@ -73,10 +100,11 @@ const RangeSlider = (props: RangeSliderProps) => {
                 min={props.minNumber}
                 max={props.maxNumber}
                 value={String(number)}
-
+                onClick={handleTextInputClick}
                 onChange={handleNumberChange}
-                onMouseLeave={checkNumber}
+                onMouseLeave={handleMouseLeave}
                 onKeyDown={handleEnterDown}
+                disabled={props.isDisabled}
               >
               </input>
               <p className="range-slider__unit-in-accent">{props.unit}</p>
@@ -91,10 +119,11 @@ const RangeSlider = (props: RangeSliderProps) => {
               min={props.minNumber}
               max={props.maxNumber}
               value={String(number)}
-              
+              onClick={handleTextInputClick}
               onChange={handleNumberChange}
-              onMouseLeave={checkNumber}
+              onMouseLeave={handleMouseLeave}
               onKeyDown={handleEnterDown}
+              disabled={props.isDisabled}
             >
             </input>
             <p className="range-slider__unit">{props.unit}</p>
@@ -109,6 +138,7 @@ const RangeSlider = (props: RangeSliderProps) => {
           max={props.maxNumber}
           value={number}
           onChange={handleNumberChange}
+          disabled={props.isDisabled}
         >
         </input>
       </div>

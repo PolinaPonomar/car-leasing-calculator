@@ -34,6 +34,15 @@
   background-color: $pressed-button-color;
 }
 
+.button_disabled {
+  opacity: 0.4;
+}
+
+.button_disabled:hover {
+  background-color: $accent-color;
+  cursor: auto;
+}
+
 .button_loading:hover{
   background-color: $accent-color;
   cursor: none;

@@ -14,6 +14,8 @@ type dataTypes = {
 type ButtonProps = {
   title: string
   formData: dataTypes
+  updateLoadingStatus: Function
+  isDisabled: boolean
 };
 
 const Button = (props: ButtonProps) => {
@@ -22,13 +24,16 @@ const Button = (props: ButtonProps) => {
 
   const handleClick = () => {
     setIsLoading(true);
+    props.updateLoadingStatus(true);
     postInfo(props.formData)
       .then((res) => {
         setIsLoading(false);
+        props.updateLoadingStatus(false);
         console.log('Done! ', res)
       })
       .catch((err) => {
         setIsLoading(false);
+        props.updateLoadingStatus(false);
         console.log('Ошибка: ' + err)
       });
   }
@@ -39,7 +44,7 @@ const Button = (props: ButtonProps) => {
       (<button className="button button_loading" type="submit" disabled>
         <div className="button__preloader"></div>
       </button>) :
-      (<button className="button" type="submit" onClick={handleClick}>{props.title}</button>)
+      (<button className={props.isDisabled ? "button button_disabled" : "button"} type="submit" onClick={handleClick} disabled={props.isDisabled}>{props.title}</button>)
     }
     </>
   );

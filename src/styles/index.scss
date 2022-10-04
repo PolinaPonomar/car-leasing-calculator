@@ -48,6 +48,14 @@ input[type="number"]:focus {
   outline: none;
 }
 
+input[type="number"]:hover {
+  cursor: pointer;
+}
+
+input[type="range"]:hover {
+  cursor: pointer;
+}
+
 
 // input[type="text"]::-webkit-outer-spin-button,
 // input[type="text"]::-webkit-inner-spin-button { - разберись с этим

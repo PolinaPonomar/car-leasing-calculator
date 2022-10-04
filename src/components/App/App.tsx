@@ -6,6 +6,7 @@ import Button from '../Button/Button';
 import { calculateSumOfLeaseAgreement, calculateMonthlyPayment, calculateInitialFee, makeNumberWithSpaces } from '../../utils/utils'
 
 const App = () => {
+  const [isLoading, setLoading] = useState(false);
   const [carPrice, setCarPrice] = useState(3300000);
   const [initialFeeInPercents, setInitialFeeInPercents] = useState(13);
   const [leasingTerm, setLeasingTerm] = useState(60);
@@ -23,6 +24,9 @@ const App = () => {
     sumOfLeaseAgreement
   }
 
+  const updateLoadingStatus = (value: boolean) => {
+    setLoading(value)
+  }
   const updateCarPrice = (value: number) => {
     setCarPrice(value)
   };
@@ -38,16 +42,42 @@ const App = () => {
       <form className="form">
         <h1 className="title">Рассчитайте стоимость автомобиля в лизинг</h1>
         <div className="range-sliders">
-          <RangeSlider title={'Стоимость автомобиля'} minNumber={1000000} maxNumber={6000000} defaultNumber={3300000} unit={'₽'} updateData={updateCarPrice}/>
-          <RangeSlider title={'Первоначальный взнос'} minNumber={10} maxNumber={60} defaultNumber={13} unit={'%'} hasFormula={true} updateData={updateInitialFeeInPercents} initialFee={initialFee}/>
-          <RangeSlider title={'Срок лизинга'} minNumber={1} maxNumber={60} defaultNumber={60} unit={'мес.'} updateData={updateLeasingTerm}/>
+          <RangeSlider
+            title={'Стоимость автомобиля'} 
+            minNumber={1000000}
+            maxNumber={6000000}
+            defaultNumber={3300000}
+            unit={'₽'}
+            updateData={updateCarPrice}
+            isDisabled={isLoading}
+          />
+          <RangeSlider
+            title={'Первоначальный взнос'}
+            minNumber={10}
+            maxNumber={60}
+            defaultNumber={13}
+            unit={'%'}
+            hasFormula={true}
+            updateData={updateInitialFeeInPercents}
+            initialFee={initialFee}
+            isDisabled={isLoading}
+          />
+          <RangeSlider
+            title={'Срок лизинга'}
+            minNumber={1}
+            maxNumber={60}
+            defaultNumber={60}
+            unit={'мес.'}
+            updateData={updateLeasingTerm}
+            isDisabled={isLoading}
+          />
         </div>
         <div className="wrapper">
           <div className="total-prices">
             <TotalPrice title={'Сумма договора лизинга'} price={makeNumberWithSpaces(sumOfLeaseAgreement)}/>
             <TotalPrice title={'Ежемесячный платеж от'} price={makeNumberWithSpaces(monthlyPayment)}/>
           </div>
-          <Button title={'Оставить заявку'} formData={formData}/>
+          <Button title={'Оставить заявку'} formData={formData} updateLoadingStatus={updateLoadingStatus} isDisabled={false}/>
         </div>
         {/* <p>{carPrice}</p>
         <p>{initialFeeInPercents}</p>

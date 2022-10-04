@@ -7,6 +7,10 @@
   flex-direction: column;
 }
 
+.range-slider_disabled {
+  opacity: 0.4;
+}
+
 .range-slider:last-of-type { // миксин?
   margin-bottom: 0;
 }
@@ -27,6 +31,11 @@
   justify-content: space-between;
   background-color: $light-gray-color;
   border-radius: 16px;
+}
+
+.range-slider__body_active {
+  background-color: $active-input-text-color;
+  border: 2px solid $light-gray-color;
 }
 
 .range-slider__body_with-accent {
@@ -90,6 +99,10 @@
   background-repeat: no-repeat;
 }
 
+.range-slider:hover .range-slider__slider {
+  height: 1px;
+}
+
 /* input range thumb */
 .range-slider__slider::-webkit-slider-thumb {
   -webkit-appearance: none;
@@ -97,7 +110,7 @@
   width: $range-slider-thumb-diameter;
   border-radius: 50%;
   background-color: $accent-color;
-  cursor: pointer;
+  //cursor: pointer;
 }
 
 .range-slider__slider::-moz-range-thumb {
@@ -106,7 +119,7 @@
   width: $range-slider-thumb-diameter;
   border-radius: 50%;
   background-color: $accent-color;
-  cursor: pointer;
+  //cursor: pointer;
 }
 
 .range-slider__slider::-ms-thumb {
@@ -115,7 +128,7 @@
   width: $range-slider-thumb-diameter;
   border-radius: 50%;
   background-color: $accent-color;
-  cursor: pointer;
+  //cursor: pointer;
 }
 
 /* input range track */
