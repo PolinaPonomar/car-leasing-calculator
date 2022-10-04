@@ -30,7 +30,7 @@
   cursor: pointer;
 }
 
-.button_pressed {
+.button:active {
   background-color: $pressed-button-color;
 }
 
@@ -53,6 +53,8 @@
     padding: 0 52px;
     height: 68px;
     width: fit-content;
+    max-width: none;
+    min-width: 345px;
     font-size: 30px;
     line-height: 36px;
   }

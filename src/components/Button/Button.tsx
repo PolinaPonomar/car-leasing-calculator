@@ -17,7 +17,6 @@ type ButtonProps = {
 };
 
 const Button = (props: ButtonProps) => {
-  const [isPressed, setIsPressed] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const postInfo = async (data: dataTypes) => await fetchInfo(data);
 
@@ -26,12 +25,10 @@ const Button = (props: ButtonProps) => {
     postInfo(props.formData)
       .then((res) => {
         setIsLoading(false);
-        setIsPressed(true);
-        console.log('Done!')
+        console.log('Done! ', res)
       })
       .catch((err) => {
         setIsLoading(false);
-        setIsPressed(true);
         console.log('Ошибка: ' + err)
       });
   }
@@ -42,7 +39,7 @@ const Button = (props: ButtonProps) => {
       (<button className="button button_loading" type="submit" disabled>
         <div className="button__preloader"></div>
       </button>) :
-      (<button className={isPressed ? "button button_pressed" : "button"} type="submit" onClick={handleClick}>{props.title}</button>)
+      (<button className="button" type="submit" onClick={handleClick}>{props.title}</button>)
     }
     </>
   );

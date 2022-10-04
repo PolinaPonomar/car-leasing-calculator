@@ -1,5 +1,5 @@
 
-export const API_URL = 'https://eoj3r7f3r4ef6v4.m.pipedream.net';
+export const API_URL = 'https://hookb.in/eK160jgYJ6UlaRPldJ1P';
 
 export const api = {
   url: API_URL,
@@ -22,12 +22,12 @@ export async function fetchInfo(data: dataTypes) {
     method: 'POST',
     headers: api.headers,
     body: JSON.stringify({
-      carPrice: data.carPrice,
-      initialFeeInPercents: data.initialFeeInPercents,
-      leasingTerm: data.leasingTerm,
-      initialFee: data.initialFee,
-      monthlyPayment: data.monthlyPayment,
-      sumOfLeaseAgreement: data.sumOfLeaseAgreement,
+      car_coast: data.carPrice,
+      initail_payment: data.initialFee,
+      initail_payment_percent: data.initialFeeInPercents,
+      lease_term: data.leasingTerm,
+      total_sum: data.sumOfLeaseAgreement,
+      monthly_payment_from: data.monthlyPayment,
     })
   });
 
