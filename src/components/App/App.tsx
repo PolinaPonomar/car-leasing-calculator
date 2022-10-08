@@ -87,7 +87,7 @@ const App = () => {
             title={'Оставить заявку'}
             formData={formData}
             updateLoadingStatus={updateLoadingStatus}
-            isDisabled={false}
+            isDisabled={true}
           />
         </div>
       </form>
